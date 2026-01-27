@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Opening App...</title>
+    <script type="text/javascript">
+        window.onload = function() {
+            var userAgent = navigator.userAgent || navigator.vendor || window.opera;
+            
+            // Define your links
+            var appScheme = "your-app-scheme://path"; // e.g., mygame://promo
+            var appStoreURL = "https://apps.apple.com/app/idYOUR_ID";
+            var playStoreURL = "https://play.google.com/store/apps/details?id=YOUR_PACKAGE";
+
+            if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
+                // Try to open iOS App
+                window.location.href = appScheme;
+                // Fallback to App Store after 2 seconds
+                setTimeout(function() { window.location.href = appStoreURL; }, 2500);
+            } 
+            else if (/android/i.test(userAgent)) {
+                // Try to open Android App
+                window.location.href = appScheme;
+                // Fallback to Play Store after 2 seconds
+                setTimeout(function() { window.location.href = playStoreURL; }, 2500);
+            } 
+            else {
+                // Desktop fallback
+                window.location.href = "https://yourwebsite.com";
+            }
+        };
+    </script>
+</head>
+<body>
+    <p>Redirecting you to the app... if nothing happens, <a href="https://yourwebsite.com">click here</a>.</p>
+</body>
+</html>
