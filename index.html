@@ -5,9 +5,14 @@
     <script type="text/javascript">
         window.onload = function() {
             var userAgent = navigator.userAgent || navigator.vendor || window.opera;
-            
+            var path = window.location.pathname;
+
+            // 2. Remove the leading slash ("/" -> "") if present to get just the address
+            if (path.substring(0, 1) === "/") {
+                path = path.substring(1);
+            }
             // Define your links
-            var appScheme = "syncorsink://path"; // e.g., mygame://promo
+            var appScheme = "syncorsink://"+path; // e.g., mygame://promo
             var appStoreURL = "https://apps.apple.com/app/idYOUR_ID";
             var playStoreURL = "https://play.google.com/store/apps/details?id=YOUR_PACKAGE";
 
